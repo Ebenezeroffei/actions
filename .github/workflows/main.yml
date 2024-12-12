@@ -1,0 +1,11 @@
+name: Print Github Context
+
+on: [push]
+
+jobs:
+  github-context:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GITHUB_CONTEXT: ${{toJson(github)}}
+        run: echo "Github Context $GITHUB_CONTEXT"

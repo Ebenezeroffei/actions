@@ -1,0 +1,14 @@
+name: Scheduled Workflows
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "*/1 * * * *"
+
+jobs:
+  schedule:
+    runs-on: macos-latest
+    steps:
+      - name: Show the date
+        run: echo date

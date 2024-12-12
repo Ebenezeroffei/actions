@@ -1,0 +1,15 @@
+name: Run Workflow on Multiple OS
+
+on: [push]
+
+jobs:
+  multiple:
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+
+    runs-on: ${{matrix.os}}
+    steps:
+      - run: echo "We are running on multiple operating systems"
+      - name: Show Current Date
+        run: date

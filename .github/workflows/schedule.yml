@@ -1,11 +1,11 @@
-name: Scheduled Workflows
+name: Scheduled Workflows 2.0
 
 on:
   schedule:
     - cron: "*/2 * * * *"
 
 jobs:
-  schedule:
+  hello:
     runs-on: ubuntu-latest
     steps:
       - name: Show the current time

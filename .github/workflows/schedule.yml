@@ -6,7 +6,7 @@ on:
 
 jobs:
   schedule:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Show the current time
         run: echo "This is the current time ${date}"

@@ -15,10 +15,10 @@ jobs:
     env:
       EVENT_NAME: ${{github.event_name}}
     steps:
-      - if: ${{github.event_name}} == 'push'
+      - if: ${{github.event_name}} == 'pull'
         run: echo "This is the event name $EVENT_NAME"
   github-token:
     runs-on: ubuntu-latest
-    if: github.token == '6363'
+    if: github.token == '**'
     steps:
       - run: echo "I am the github token so yeah."

@@ -1,0 +1,24 @@
+name: Conditionals
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  check-repository-url:
+    runs-on: ubuntu-latest
+    if: endsWith(github.repositoryUrl,'actions.git')
+    steps:
+      - run: echo "This is the actions repository"
+  event-name:
+    runs-on: ubuntu-latest
+    env:
+      EVENT_NAME: ${{github.event_name}}
+    steps:
+      - if: ${{github.event_name}} == 'push'
+        run: echo "This is the event name $EVENT_NAME"
+  github-token:
+    runs-on: ubuntu-latest
+    if: github.token == '6363'
+    steps:
+      - run: echo "I am the github token so yeah."

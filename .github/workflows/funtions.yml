@@ -35,4 +35,4 @@ jobs:
         if: always()
         run: echo "I will always run no matter what."
       - name: Format
-        run: echo "${{format('Hello {1} {2}.', 'God','Almighty')}}"
+        run: echo "${{format('Hello {0} {1}.', 'God','Almighty')}}"

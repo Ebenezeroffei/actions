@@ -1,0 +1,38 @@
+name: Github Functions
+
+on: [push, pull_request]
+
+jobs:
+  functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Contains Function
+        if: contains('Hello','lo')
+        run: echo "Hello contains lo"
+      - name: Starts with
+        if: startsWith('Tony','To')
+        run: echo "Tony starts with 'To'"
+      - name: Ends with
+        if: endsWith('Stark','k')
+        run: echo "Stark ends with 't'"
+      - name: Join Array
+        env:
+          ARRAY: "['Tony','Stark']"
+          JOINED_ARRAY: ${{join('Tony',' ')}}
+        run: echo "I am joining $ARRAY to be $JOINED_ARRAY"
+      - name: To JSON
+        run: echo "GitHub context in json format = ${{toJson(github)}}"
+      - name: Job Success
+        if: success()
+        run: echo "I am displaying because all the jobs before me were successful."
+      - name: Job Failure
+        if: failure()
+        run: echo "I am displaying because at least one job failed."
+      - name: Job Cancelled
+        if: cancelled()
+        run: echo "I am displaying because at least one job got cancelled."
+      - name: Always
+        if: always()
+        run: echo "I will always run no matter what."
+      - name: Format
+        run: echo "${{format('Hello {1} {2}.', 'God','Almighty')}}"

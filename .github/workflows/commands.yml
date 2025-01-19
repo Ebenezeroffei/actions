@@ -9,15 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add a variable to env
-        run: echo "KING=Jesus Christ >> $GITHUB_ENV"
+        run: echo "KING=Jesus Christ" >> $GITHUB_ENV
       - name: Display env variable
-        run: echo "$KING"
+        run: echo $KING
       - name: Add value to github output
         id: hey
-        run: echo "result=So I am the result that was added >> $GITHUB_OUTPUT"
+        run: echo "result=So I am the result that was added" >> $GITHUB_OUTPUT
       - name: Show output value
         run: echo "${{steps.hey.outputs.result}}"
       - name: Add path to github path
-        run: echo "\i\love\you >> $GITHUB_PATH"
+        run: echo "\i\love\you" >> $GITHUB_PATH
       - name: Show github path
         run: echo "$$GITHUB_PATH"
+      - name: Group loggin
+        run: |
+          echo "::group::Proverbs 3:7"
+          echo "Do not be so impressed with your wisdom"
+          echo "Instead fear God"
+          echo "And turn away from evil"
+          echo "::endgroup::"
+      - name: Show debug message
+        run: echo "::debug::This is a debug message"

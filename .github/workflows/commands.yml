@@ -20,7 +20,7 @@ jobs:
       - name: Add path to github path
         run: echo "\i\love\you" >> $GITHUB_PATH
       - name: Show github path
-        run: echo "$$GITHUB_PATH"
+        run: echo "$GITHUB_PATH"
       - name: Group loggin
         run: |
           echo "::group::Proverbs 3:7"

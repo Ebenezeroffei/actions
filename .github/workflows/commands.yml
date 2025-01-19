@@ -2,22 +2,22 @@ name: Workflow commands
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   workflow-commands:
-    strategy:
-      matrix:
-        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-    runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
     steps:
-      - name: Show GITHUB_ENV contents
-        run: echo "$GITHUB_ENV"
-      - name: Show GITHUB_OUTPUT contents
-        run: echo "$GITHUB_OUTPUT"
-      - name: Show GITHUB_PATH contents
-        run: echo "$GITHUB_PATH"
+      - name: Add a variable to env
+        run: echo "KING=Jesus Christ >> $GITHUB_ENV"
+      - name: Display env variable
+        run: echo "$KING"
+      - name: Add value to github output
+        id: hey
+        run: echo "result=So I am the result that was added >> $GITHUB_OUTPUT"
+      - name: Show output value
+        run: echo "${{steps.hey.outputs.result}}"
+      - name: Add path to github path
+        run: echo "\i\love\you >> $GITHUB_PATH"
+      - name: Show github path
+        run: echo "$$GITHUB_PATH"

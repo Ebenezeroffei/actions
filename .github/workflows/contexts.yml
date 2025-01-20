@@ -1,0 +1,42 @@
+name: Contexts
+
+on: push
+
+jobs:
+  some-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Current Job and Env Context
+        env:
+          JOB: ${{toJson(job)}}
+          ENV: ${{toJson(env)}}
+        run: |
+          echo "::group::My Grouped Logging (Job and Env)"
+          echo "Job Context = $JOB"
+          echo "Env Context = $ENV"
+          echo "::endgroup::"
+      - name: Current Needs and Vars Context
+        env:
+          NEEDS: ${{toJson(needs)}}
+          VARS: ${{toJson(vars)}}
+        run: |
+          echo "::group::My Grouped Logging (Needs and Vars)"
+          echo "Needs = $NEEDS"
+          echo "Vars = $VARS"
+          echo "::endgroup::"
+      - name: Current Steps
+        id: tempStep
+        env:
+          STEPS: ${{toJson(steps)}}
+        run: echo "Steps = $STEPS"
+      - name: Current Secrets
+        env:
+          SECRETS: ${{toJson(secrets)}}
+        run: echo "Secrets = $SECRETS"
+  other-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Current Runner
+        env:
+          RUNNER: ${{runner}}
+        run: echo "Runner = $RUNNER"

@@ -38,5 +38,5 @@ jobs:
     steps:
       - name: Current Runner
         env:
-          RUNNER: ${{runner}}
+          RUNNER: ${{toJson(runner)}}
         run: echo "Runner = $RUNNER"

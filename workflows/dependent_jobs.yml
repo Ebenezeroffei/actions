@@ -1,0 +1,23 @@
+name: Dependent Jobs
+
+on: push
+
+jobs:
+  job1:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    runs-on: ${{matrix.os}}
+    steps:
+      - run: echo "Hello"
+  job2:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{matrix.os}}
+    needs: job1
+    steps:
+      - run: echo "World"

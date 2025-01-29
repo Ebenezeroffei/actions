@@ -8,5 +8,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Make the script executable
+        run: chmod +x grouped_logs.sh
       - name: Run Script
         run: ./grouped_logs.sh
